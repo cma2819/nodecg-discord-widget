@@ -1,0 +1,84 @@
+{
+  "name": "nodecg-discord-widget",
+  "version": "0.0.1",
+  "description": "Really simple discord notification widget and Replicant implementation.",
+  "homepage": "https://github.com/cma2819/nodecg-discord-widget#readme",
+  "author": "Cma",
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "NodeCG",
+    "Riot.ts"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.4.1",
+    "dashboardPanels": [
+      {
+        "name": "discord-widget",
+        "title": "Discord Widget",
+        "width": 2,
+        "file": "discord-widget.html",
+        "headerColor": "#bcbcff"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "discord.html",
+        "width": 360,
+        "height": 640
+      }
+    ]
+  },
+  "dependencies": {
+    "@riotjs/compiler": "^4.5.5",
+    "@riotjs/hot-reload": "^4.0.0",
+    "@riotjs/parcel-plugin-riot": "^4.0.1",
+    "@types/node": "^13.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "discord.js": "^11.5.1",
+    "eslint": "^6.8.0",
+    "eslint-config-riot": "^3.0.0",
+    "ffmpeg-static": "^3.0.0",
+    "generate-riot-ts": "^0.9.2",
+    "husky": "^4.0.7",
+    "include-nodecg": "^0.0.3",
+    "lodash": "^4.17.15",
+    "nodecg": "^1.4.1",
+    "opusscript": "0.0.7",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1",
+    "riot": "^4.8.6",
+    "ts-nodecg": "^0.3.0",
+    "typescript": "^3.7.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.149"
+  },
+  "scripts": {
+    "build": "run-s build:dashboard build:graphics build:extension",
+    "build:dashboard": "parcel build src/browser/dashboard/*.html --out-dir dashboard --public-url ./",
+    "build:extension": "parcel build src/extension/index.ts --target node --out-dir extension --public-url ./",
+    "build:graphics": "parcel build src/browser/graphics/*.html --out-dir graphics --public-url ./",
+    "clean": "del-cli bundle-analyzer dashboard extension graphics .cache",
+    "format": "prettier --write \"**/*.{ts,json,html,css,md}\"",
+    "postinstall": "include-nodecg postinstall",
+    "start": "include-nodecg start",
+    "typecheck": "tsc -b src/browser src/extension",
+    "watch:dashboard": "parcel watch src/browser/dashboard/*.html --out-dir dashboard --public-url ./",
+    "watch:extension": "parcel watch src/extension/index.ts --target node --out-dir extension --public-url ./",
+    "watch:graphics": "parcel watch src/browser/graphics/*.html --out-dir graphics --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cma2819/nodecg-discord-widget.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cma2819/nodecg-discord-widget/issues"
+  }
+}

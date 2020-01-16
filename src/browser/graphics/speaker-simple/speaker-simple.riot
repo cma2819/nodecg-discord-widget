@@ -1,0 +1,62 @@
+<speaker-simple>
+    <style>
+        :host {
+            color: white;
+            font-size: 15vh;
+        }
+        .flexbox {
+            margin: 0.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            text-align: center;
+            border-bottom: 0.1rem solid white;
+            margin-bottom: 0.5rem;
+        }
+        .speakers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .speakers div {
+            margin: 0.5rem;
+            padding: 0.2rem 0.5rem;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    
+    <div class="flexbox">
+        <div class="title">Speakers</div>
+        <div class="speakers">
+            <div each={ speaker in state.speakers }>{ speaker.name }</div>
+        </div>
+    </div>
+
+    <script type="ts">
+        // Define logics about this component here.
+        
+        import { SpeakerSimpleComponent } from './types'
+
+        const speakersReplicant = nodecg.Replicant('speakers')
+
+        function SpeakerSimple(): SpeakerSimpleComponent {
+            return {
+                state:{
+                    speakers: []
+                },
+                onMounted() {
+                    speakersReplicant.on('change', (newVal) => {
+                        this.state.speakers = newVal
+                        this.update()
+                    })
+                }
+            }
+        }
+
+        export default SpeakerSimple
+        
+    </script>
+</speaker-simple>
