@@ -48,7 +48,7 @@
     "husky": "^4.0.7",
     "include-nodecg": "^0.0.3",
     "lodash": "^4.17.15",
-    "nodecg": "^1.4.1",
+    "nodecg": "^1.5.0",
     "npm-run-all": "^4.1.5",
     "opusscript": "0.0.7",
     "parcel-bundler": "^1.12.4",
@@ -58,18 +58,19 @@
     "typescript": "^3.7.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.149"
+    "@types/lodash": "^4.14.149",
+    "trash-cli": "^3.0.0"
   },
   "scripts": {
     "build": "run-s build:dashboard build:graphics build:extension",
     "build:dashboard": "parcel build src/browser/dashboard/*.html --out-dir dashboard --public-url ./",
-    "build:extension": "parcel build src/extension/index.ts --target node --out-dir extension --public-url ./",
+    "build:extension": "tsc -b src/extension",
     "build:graphics": "parcel build src/browser/graphics/*.html --out-dir graphics --public-url ./",
-    "clean": "del-cli bundle-analyzer dashboard extension graphics .cache",
+    "clean": "trash dashboard extension graphics .cache",
     "format": "prettier --write \"**/*.{ts,json,html,css,md}\"",
     "postinstall": "include-nodecg postinstall",
     "start": "include-nodecg start",
-    "typecheck": "tsc -b src/browser src/extension",
+    "typecheck": "tsc -b src/browser src/extension --noEmit",
     "watch:dashboard": "parcel watch src/browser/dashboard/*.html --out-dir dashboard --public-url ./",
     "watch:extension": "parcel watch src/extension/index.ts --target node --out-dir extension --public-url ./",
     "watch:graphics": "parcel watch src/browser/graphics/*.html --out-dir graphics --public-url ./"
