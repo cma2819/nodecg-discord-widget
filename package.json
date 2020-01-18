@@ -72,7 +72,7 @@
     "start": "include-nodecg start",
     "typecheck": "tsc -b src/browser src/extension --noEmit",
     "watch:dashboard": "parcel watch src/browser/dashboard/*.html --out-dir dashboard --public-url ./",
-    "watch:extension": "parcel watch src/extension/index.ts --target node --out-dir extension --public-url ./",
+    "watch:extension": "tsc -b src/extension -w",
     "watch:graphics": "parcel watch src/browser/graphics/*.html --out-dir graphics --public-url ./"
   },
   "repository": {
