@@ -50,8 +50,7 @@ const setup = async (nodecg: NodeCG) => {
         setInterval(() => {
             const speakers: Speakers = channel.members.filter(member => member.id !== client.user.id && ignoreUserIds.indexOf(member.id) < 0).map((member) => {
                 return {
-                    id: member.id,
-                    name: member.displayName,
+                    member: member,
                     speaking: member.speaking || false
                 }
             })

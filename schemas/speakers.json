@@ -5,19 +5,15 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-            "id": {
-                "type": "string"
-            },
-            "name": {
-                "type": "string"
+            "member": {
+                "$ref": "lib/member.json"
             },
             "speaking": {
                 "type": "boolean"
             }
         },
         "required": [
-            "id",
-            "name",
+            "member",
             "speaking"
         ]
     }

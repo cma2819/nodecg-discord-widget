@@ -6,7 +6,15 @@
  */
 
 export type Speakers = {
-	id: string;
-	name: string;
+	member: {
+		displayName: string;
+		user: {
+			avatarURL?: string;
+			id: string;
+			username: string;
+			[k: string]: any;
+		};
+		[k: string]: any;
+	};
 	speaking: boolean;
 }[];
