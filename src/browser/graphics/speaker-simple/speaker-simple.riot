@@ -31,7 +31,7 @@
     <div class="flexbox">
         <div class="title">Speakers</div>
         <div class="speakers">
-            <div each={ speaker in state.speakers }>{ speaker.member.nickname || speaker.member.user.username }</div>
+            <div each={ speaker in state.speakers }>{ speaker.member.displayName }</div>
         </div>
     </div>
 
